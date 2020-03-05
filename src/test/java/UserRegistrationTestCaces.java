@@ -60,4 +60,18 @@ public class UserRegistrationTestCaces {
         Assert.assertFalse(moNumber);
     }
 
+    // Password validation minimum 8 charector
+    @Test
+    public void givenValid_WhenCaractorLengthIsMinimum8_ThenTrue() {
+        boolean passWord=obj.patternValidation("Vishalkard");
+        Assert.assertTrue(passWord);
+    }
+
+    // Password length less than 8 charector then false
+    @Test
+    public void givenInValid_WhenCaractorLengthIsLessThan8_ThenFalse() {
+        boolean passWord=obj.patternValidation("Vishal");
+        Assert.assertFalse(passWord);
+    }
+
 }
