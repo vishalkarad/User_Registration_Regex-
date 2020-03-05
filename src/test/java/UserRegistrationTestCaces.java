@@ -28,4 +28,23 @@ public class UserRegistrationTestCaces {
         boolean lastName=obj.nameValidation("kard");
         Assert.assertFalse(lastName);
     }
+
+    // Check Email is valid
+    @Test
+    public void givenEmailValid_whenMandetoryField_thenReturnTrue() {
+        boolean email=obj.emailValidation("ab@cbl.co");
+        Assert.assertTrue(email);
+    }
+    // Check Optional also valid
+    @Test
+    public void givenEmailValid_whenOptionalField_thenReturnTrue() {
+        boolean email=obj.emailValidation("abc.xyz@bl.co.in");
+        Assert.assertTrue(email);
+    }
+    // Email are not valid when mandatory parts are not enterd (@)
+    @Test
+    public void givenEmailInValid_whenNotFildMandatoryParts_thenReturnFalse() {
+        boolean email=obj.emailValidation("abcbl.co");
+        Assert.assertFalse(email);
+    }
 }
