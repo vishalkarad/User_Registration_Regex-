@@ -3,6 +3,7 @@ import org.junit.Test;
 
 public class UserRegistrationTestCaces {
     UserRegistration obj=new UserRegistration();
+    private boolean password;
 
     // Check to first name is valid
     @Test
@@ -74,4 +75,16 @@ public class UserRegistrationTestCaces {
         Assert.assertFalse(passWord);
     }
 
+    // Should have at list one upper case and minimum leangth is 8
+    @Test
+    public void givenValid_WhenCaractorAtlistOneCapital_ThenTrue() {
+        boolean passWord=obj.patternValidation("Vishalkard");
+        Assert.assertTrue(passWord);
+    }
+    // No upper case then false
+    @Test
+    public void givenInValid_WhenCaractorNotAtlistOneCapital_Thenfalse() {
+        boolean passWord=obj.patternValidation("vishalkard");
+        Assert.assertFalse(passWord);
+    }
 }
