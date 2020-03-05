@@ -47,4 +47,17 @@ public class UserRegistrationTestCaces {
         boolean email=obj.emailValidation("abcbl.co");
         Assert.assertFalse(email);
     }
+    //Check mo number and contry code
+    @Test
+    public void givenMovalidation_WhenContrycodAndTenDigitNumber_Then_Valid() {
+        boolean moNumber=obj.mobileValidation("91 8956561212");
+        Assert.assertTrue(moNumber);
+    }
+    //Contry code and space are not enterd then condition is false
+    @Test
+    public void givenInValid_WhenContrycodeAreNotEnterd_ThenFalse() {
+        boolean moNumber=obj.mobileValidation("8956561212");
+        Assert.assertFalse(moNumber);
+    }
+
 }
