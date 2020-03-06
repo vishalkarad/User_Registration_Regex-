@@ -78,7 +78,7 @@ public class UserRegistrationTestCaces {
     // Should have at list one upper case and minimum leangth is 8
     @Test
     public void givenValid_WhenCaractorAtlistOneCapital_ThenTrue() {
-        boolean passWord=obj.patternValidation("Vishalkard");
+        boolean passWord=obj.patternValidation("vishAlkard");
         Assert.assertTrue(passWord);
     }
     // No upper case then false
@@ -86,5 +86,18 @@ public class UserRegistrationTestCaces {
     public void givenInValid_WhenCaractorNotAtlistOneCapital_Thenfalse() {
         boolean passWord=obj.patternValidation("vishalkard");
         Assert.assertFalse(passWord);
+    }
+
+    // Atlist one numric and one Capital later
+    @Test
+    public void givenValid_WhenAtlistOneCharAndNumric_ThenTrue(){
+        boolean result=obj.givenPatternChackCharNumric("Vishal123");
+        Assert.assertTrue(result);
+    }
+    // Atlist no one numric and one Capital later
+    @Test
+    public void giveninValid_WhenAtlistNoOneCharAndNumric_ThenFalse(){
+        boolean result=obj.givenPatternChackCharNumric("vishal123");
+        Assert.assertFalse(result);
     }
 }

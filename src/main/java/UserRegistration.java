@@ -5,8 +5,8 @@ public class UserRegistration {
     String firstNameAndlastName="^[A-Z][a-zA-Z]{2,}$";
     String valiedEmail="^[a-zA-Z]{1,}([.]?[a-zA-Z]{1,})?[@]{1}[a-zA-Z]{1,}[.]{1}[a-z]{2}([.]?[a-z]{2})?$";
     String moPattern="^[0-9]{2}[ ]{1}[0-9]{10}";
-    //String passwordPattern="[a-zA-Z]{8,}$";
     String passwordPattern="^([a-zA-Z0-9]*[A-Z]+[a-zA-Z0-9]*)$";
+    String passwordCharNumric="^([A-Za-z0-9]*[0-9]+[A-Za-z0-9]*[A-Z])|([A-Za-z0-9]*[A-Z]+[A-Za-z0-9]*[0-9])$";
     public static void main(String[] args) {
         System.out.println("***************Welcome To User Registration***************");
     }
@@ -31,6 +31,17 @@ public class UserRegistration {
         else{
             return false;
         }
+    }
+
+    // At list one Capital later and one numric
+    public boolean givenPatternChackCharNumric(String password){
+        if(password.length()>=8) {
+            return (Pattern.matches(passwordCharNumric,password));
+        }
+        else{
+            return false;
+        }
+
     }
 
 }
