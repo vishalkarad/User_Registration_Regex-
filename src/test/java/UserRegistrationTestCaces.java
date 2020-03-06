@@ -3,8 +3,10 @@ import org.junit.Test;
 
 public class UserRegistrationTestCaces {
     UserRegistration obj=new UserRegistration();
-    private boolean password;
-
+    String emailArray[]={"abc@yahoo.com","abc-100@yahoo.com","abc.100@yahoo.com","abc111@abc.com",
+            "abc-100@abc.net","abc.100@abc.com.au","abc@1.com","abc@gmail.com.com","abc+100@gmail.com"};
+    String inValidEmailArray[]={"abc","abc@.com.my","abc123@gmail.a","abc123@.com","abc123@.com.com,",".abc@abc.com",
+            "abc()*@gmail.com","abc@%*.com","abc..2002@gmail.com","abc.@gmail.com","abc@abc@gmail.com","abc@gmail.com.1a","abc@gmail.com.aa.au"};
     // Check to first name is valid
     @Test
     public void givenFirstName_whenValid_thenReturn(){
@@ -33,20 +35,27 @@ public class UserRegistrationTestCaces {
     // Check Email is valid
     @Test
     public void givenEmailValid_whenMandetoryField_thenReturnTrue() {
-        boolean email=obj.emailValidation("ab@cbl.co");
-        Assert.assertTrue(email);
+        for(int index1=0;index1<emailArray.length;index1++){
+            boolean email=obj.emailValidation(emailArray[index1]);
+            Assert.assertTrue(email);
+        }
     }
     // Check Optional also valid
     @Test
     public void givenEmailValid_whenOptionalField_thenReturnTrue() {
-        boolean email=obj.emailValidation("abc.xyz@bl.co.in");
-        Assert.assertTrue(email);
+        for(int index1=0;index1<emailArray.length;index1++){
+            boolean email=obj.emailValidation(emailArray[index1]);
+            Assert.assertTrue(email);
+        }
+
     }
     // Email are not valid when mandatory parts are not enterd (@)
     @Test
     public void givenEmailInValid_whenNotFildMandatoryParts_thenReturnFalse() {
-        boolean email=obj.emailValidation("abcbl.co");
-        Assert.assertFalse(email);
+        for(int index1=0;index1<inValidEmailArray.length;index1++){
+            boolean email=obj.emailValidation(inValidEmailArray[index1]);
+            Assert.assertFalse(email);
+        }
     }
     //Check mo number and contry code
     @Test
